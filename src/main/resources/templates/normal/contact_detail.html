@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title >Document</title>
+</head>
+<body>
+<section>
+
+
+<div class="card mr-3 ml-3" th:if="${model}" >
+
+<div class="card-body"  > 
+
+<div class="container text-center">
+
+<img src="" style="height: 200px; width: 200px;" class="my_profile_picture" th:src="@{'/Img/'+${model.image}}" alt="profile_photo" />
+
+<h3 class="mt=3"><span th:text="${model.name}" class=""></span>(<span th:text="${model.secondName}" class="b"></span>)</h3>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#ID</th>
+								<th scope="col">SCM-<span th:text="${model.cId}" class="a"></span></th>
+								
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+							<th><span th:text="${model.email}" class="a"></span></th>
+								
+							</tr>
+
+                     <tr>
+								<th scope="row">Phone</th>
+							<th><span th:text="${model.phone}" class="a"></span></th>
+								
+							</tr>
+							
+							<tr>
+								<th scope="row">Work</th>
+							<th><span th:text="${model.work}" class="a"></span></th>
+								
+							</tr>
+							
+							<tr>
+								<th scope="row">Description</th>
+							<th><span th:text="${model.discription}" class="a"></span></th>
+								
+							</tr>
+						</tbody>
+					</table>
+
+<div class="container mt-3">
+
+                       <button href="" th:onclick="|deleteFunction(${model.cId})|" class="btn btn-danger btn-sm">Delete</button>
+							
+							
+							<form method="post" th:action="@{'/user/update-Contact/'+${model.cId}}" class="mt-3">
+							
+							<button type="submit" class="btn btn-primary btn-sm">Update</button>
+							
+							</form>
+</div>
+				</div>
+</div>
+
+
+
+</div>
+
+
+<h1 th:unless="${model}" class="text-center p-3 bg-danger text-white">You Dont't Have Permission To See Contact...</h1>
+
+</section>
+
+	
+</body>
+</html>
